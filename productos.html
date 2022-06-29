@@ -1,0 +1,47 @@
+{% extends 'app/basePerfil.html' %}
+{% load static %}
+{% block perfil%}
+
+
+    {% for aux in listaProductos %}
+  
+      <a href="" class="position-absolute "></a>
+          <div class="align-items-center p-3 bg-rojo-clarito">
+      <div class="list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm text-center">
+        <div class="list-card-image">
+  
+          <div class="member-plan position absolute"><span class="badge m-3 badge-danger">{{ aux.tipo }}</span></div>
+          <div class="p-3">
+  
+            {% if aux.imagen %}
+            <img src="{{ aux.imagen.url }}" class="i mg-fluid item-img mb-3" width="130" height="100">
+            {% else %}
+            <img src="{{ aux.imagen.url }}" class="img-fluid item-img w-100 mb-3" width="130" height="100">
+            {% endif %}
+  
+            <div class="card-body text-center" >
+              <h4 class=" card-title " >{{ aux.nombre }} - ${{ aux.precio }} </h4>
+              <p class="card-text">{{ aux.codigo }} - {{ aux.descripcion }}</p>
+              <p class="card-text">{{ aux.tipo }} - {{ aux.stock }}</p>
+              <form action = "" method="POST">
+                {% csrf_token %}
+                <input  type="hidden" name="codigo" id="codigo" value="{{ aux.codigo }}">
+                <input  type="hidden" name="nombre" id="nombre" value="{{ aux.nombre }}">
+                <input  type="hidden" name="precio" id="precio" value="{{ aux.precio }}">
+                <input  type="hidden" name="descripcion" id="descripcion" value="{{ aux.descripcion }}">
+                <input  type="hidden" name="imagen" id="imagen" value="{{ aux.imagen.url }}">
+                <input type="submit" value="Comprar" class="btn btn-success">
+              </form>
+            </div>
+  
+          </div>
+        </div>
+  
+      </div>
+    </div>
+  
+  
+    {% endfor %}
+  </div>
+
+  {% endblock perfil%}

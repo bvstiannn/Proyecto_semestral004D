@@ -1,0 +1,58 @@
+{% extends 'app/basePerfil.html' %}
+{% load static %}
+{% block perfil %}
+<div class="container mt-3 bg-danger">
+    <h2>Filtro de busqueda</h2>
+    <p></p>  
+    <input class="form-control" id="myInput" type="text" placeholder="Buscar">
+    <br>
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Fecha</th>
+          <th>Numero de pedido</th>
+          <th>Email</th>
+        </tr>
+      </thead>
+      <tbody id="myTable">
+        <tr>
+          <td>4 de enero</td>
+          <td>#77456</td>
+          <td>elvergaas@gmail.com</td>
+        </tr>
+        <tr>
+          <td>10 de febrero</td>
+          <td>#85694</td>
+          <td>mary@hotmail.com</td>
+        </tr>
+        <tr>
+          <td>15 de febrero</td>
+          <td>#44503</td>
+          <td>july@yahoo.com</td>
+        </tr>
+        <tr>
+          <td>20 de febrero</td>
+          <td>#50456</td>
+          <td>a_r@gmail.com</td>
+        </tr>
+        <tr>
+          <td>5 de Marzo</td>
+          <td>#64594</td>
+          <td>tushamakito@gmail.com</td>
+      </tbody>
+    </table>
+    
+    <p></p>
+  </div>
+  
+  <script>
+  $(document).ready(function(){
+    $("#myInput").on("keyup", function() {
+      var value = $(this).val().toLowerCase();
+      $("#myTable tr").filter(function() {
+        $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+      });
+    });
+  });
+  </script>
+{% endblock perfil %}

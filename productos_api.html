@@ -1,0 +1,46 @@
+{% extends 'app/base.html' %}
+{% load static %}
+{% block contenido %}
+<div class="col-6 col-md mb-3 bg-rojo-clarito">
+
+    {% for aux in lista_json %}
+  
+      <a href="" class="position-absolute "></a>
+          <div class="align-items-center p-3 bg-rojo-clarito">
+      <div class="list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm text-center">
+        <div class="list-card-image">
+  
+          <div class="member-plan position absolute"><span class="badge m-3 badge-danger">{{ aux.tipo }}</span></div>
+          <div class="p-3">
+  
+            {% if aux.img %}
+            <img src="{{ aux.img }}" class="i mg-fluid item-img mb-3" width="130" height="100">
+            
+            
+            {% endif %}
+  
+            <div class="card-body text-center" >
+              <h4 class=" card-title " >{{ aux.name }}  </h4>
+              <p class="card-text">{{ aux.level }} 
+              <form action = "" method="POST">
+                {% csrf_token %}
+                <input  type="hidden" name="codigo" id="codigo" value="{{ aux.codigo }}">
+                <input  type="hidden" name="nombre" id="nombre" value="{{ aux.name }}">
+                <input  type="hidden" name="precio" id="precio" value="{{ aux.status }}">
+                <input  type="hidden" name="descripcion" id="descripcion" value="{{ aux.species }}">
+                <input  type="hidden" name="imagen" id="imagen" value="{{ aux.image.}}">
+                <input type="submit" value="Comprar" class="btn btn-success">
+              </form>
+            </div>
+  
+          </div>
+        </div>
+  
+      </div>
+    </div>
+  
+  
+    {% endfor %}
+  </div>
+
+{% endblock contenido %}

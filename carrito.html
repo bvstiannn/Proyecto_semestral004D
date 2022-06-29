@@ -1,0 +1,39 @@
+{% extends 'app/basePerfil.html' %}
+{% load static %}
+{% block perfil %}
+          <h2 style="color:black;"></h2>
+          <p style="color: black;"></p>            
+          <table class="table table-primary">
+           
+            <tbody>
+                {% for aux in lista_carrito %}
+                <tr>
+                    <td><img src="{{ aux.codigo.imagen.url }}" class="" style="width:100px;"></td>
+                    <td>{{ aux.codigo.codigo }}</td>
+                    <td>{{ aux.codigo.stock }}</td>
+                    <td>{{ aux.codigo.nombre }}</td>
+                    <td>${{ aux.codigo.precio }}</td>
+                    <td>{{ aux.codigo.descripcion }}</td>
+                    <td>{{ aux.codigo.tipo }}</td>
+                    <td></td>
+                    <td><a href="{% url 'eliminar_carrito' aux.codigo.codigo %}"class = "btn btn-danger" >Borrar</a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <div class="card" style="width:300px">
+          <div class="card-body">
+            <h4 class="card-title">Total de la compra</h4>
+            
+            
+            <p class="card-text">Total a pagar: $32.300</p>
+
+            <a href="{% url 'pago_recibido'%}" class="btn btn-primary">Ir a pagar</a>
+            
+          </div>
+        </div>
+          </div>
+      </div>
+      </div>
+  </div>
+{% endblock perfil %}

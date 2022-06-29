@@ -1,0 +1,15 @@
+{% extends 'app/basePerfil.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+{% block perfil%}
+<div class="col-sm-8 flex-column mt-3">
+    <form action="" method="POST" class="m-5" enctype="multipart/form-data">
+        {% csrf_token %}
+        <table>
+            {{ form|crispy }}
+            <td>
+            <input type="submit"  class="btn btn-success mt-3" name="btnEnviar" id="btnEnviar">
+            </td>
+        </table>
+    </form> 
+{% endblock perfil %}
